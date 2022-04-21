@@ -48,6 +48,8 @@ int main()
     d3 = d3 - '0';
     d3 = d3 * 10;
     d4 = d3;
+	
+/* -------------------- */
     
     /* Read second Character (Digit) */
     read_char();
@@ -55,7 +57,9 @@ int main()
     d2 = d0;
     d2 = d2 - '0';
     d4 = d4 + d2;
-    d4 = d4 * 10;;
+    d4 = d4 * 10;
+	
+/* -------------------- */
 
     /* Read Third Character (Digit) */
     read_char();
@@ -63,6 +67,8 @@ int main()
     d1 = d0;
     d1 = d1 - '0';
     d4 = d4 + d1;
+	
+/* -------------------- */
 
     /* Constructing Equation y = ((3 * x)^2/8 + 45) % 10,000 */
     d4 = d4 * 3;
@@ -70,23 +76,31 @@ int main()
     d4 = d4 / 8;
     d4 = d4 + 45;
     d4 = d4 % 10000;
+	
+/* -------------------- */
 
     /* Start a new line */
     d0 = CR;
     write_char();
     d0 = LF;
     write_char();
+	
+/* -------------------- */
     
     /* One's Digit */
     d5 = d4;
     d5 = d5 % 10;
     d5 = d5 + '0';
+	
+/* -------------------- */
 
     /* Ten's Digit */
     d6 = d4;
     d6 = d6 / 10;
     d6 = d6 % 10;
     d6 = d6 + '0';
+	
+/* -------------------- */
 
     /* Hundred's Digit */
     d7 = d4;
@@ -94,6 +108,8 @@ int main()
     d7 = d7 / 10;
     d7 = d7 % 10;
     d7 = d7 + '0';
+	
+/* -------------------- */
 
     /* Print the result of the Equation */
     d0 = d7;
@@ -102,6 +118,8 @@ int main()
     write_char();
     d0 = d5;
     write_char();
+	
+/* -------------------- */
 
     /* Start a new line */
     d0 = CR;
