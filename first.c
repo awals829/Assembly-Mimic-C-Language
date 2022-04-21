@@ -1,3 +1,11 @@
+/*
+Most Documentation on this is vague as this was designed as a small learning
+process. Therefore some code was provided pre-implementation of my own in main().
+
+See FIRST.S for further details since both function the same.
+*/
+
+
 #define _DEFAULT_SOURCE 1  /* don't worry about this - simply needed for IO stuff */
 
 #include <stdio.h>
@@ -14,7 +22,8 @@
 #define false 0
 
 
-/* Note: read_char is written to simulate the 68000 implementation, where
+/* 
+Note: read_char is written to simulate the 68000 implementation, where
          the high 24 bits of d0 are left in an undefined state after the
 	 call.
 */
