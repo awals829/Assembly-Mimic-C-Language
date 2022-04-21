@@ -68,7 +68,8 @@ start:	jsr	read_char	;READ FIRST CHARACTER (HUNDRED'S)
 	mulu.w	#10,d3		
 	move.b	d3,d4		
 
-	
+;--------------------
+
 	jsr	read_char	;READ SECOND CHARACTER (TEN'S)	
 	and.l	#CLRBYTE,d0
 	move.b	d0,d2
@@ -76,19 +77,22 @@ start:	jsr	read_char	;READ FIRST CHARACTER (HUNDRED'S)
 	add.b	d2,d4
 	mulu.w	#10,d4		
 
-	
+;--------------------
+
 	jsr	read_char	;READ THIRD CHRACTER (ONE'S)	
 	and.l	#CLRBYTE,d0
 	move.b	d0,d1		
 	sub.b	#CHARZERO,d1		
 	add.w	d1,d4		
 
+;--------------------
 	
 	move.b	#CR,d0		;WRITE A NEW LINE FOR PRINTING
 	jsr	write_char
 	move.b	#LF,d0
 	jsr	write_char
-	
+
+;--------------------
 
 	mulu.w	#3,d4		;Equation y=(((3 * X)^2)/8 + 45) % 1,000
 	mulu.w	d4,d4
@@ -97,23 +101,27 @@ start:	jsr	read_char	;READ FIRST CHARACTER (HUNDRED'S)
 	divu	#1000,d4
 	swap	d4
 
+;--------------------
 	
 	move.w	d4,d5		;Initialize one's storage
 	move.w	d4,d6		;Initialize ten's storage
 	move.w	d4,d7		;Initialize hundred's storage
 
+;--------------------
 	
 	divu	#10,d5		;RETRIEVE THE ONE'S DIGIT
 	swap	d5
 	add.b	#CHARZERO,d5		
 
+;--------------------
 	
 	divu	#10,d6		;RETRIEVE THE TEN'S DIGIT
 	and.l	#CLRWORD,d6	;Clear MSW to clear remainder from longword
 	divu	#10,d6
 	swap	d6
 	add.b	#CHARZERO,d6	;Convert value back to a char for printing
-	
+
+;--------------------
 	
 	divu	#10,d7		;RETRIEVE THE HUNDRED'S DIGIT
 	and.l	#CLRWORD,d7
@@ -123,7 +131,7 @@ start:	jsr	read_char	;READ FIRST CHARACTER (HUNDRED'S)
 	swap	d7
 	add.b	#CHARZERO,d7		
 
-
+;--------------------
 	
 	move.b	d7,d0				
 	jsr	write_char	;Print hundred's digit
