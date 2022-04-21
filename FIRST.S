@@ -5,7 +5,10 @@
 ;	y = (((3 * X)^2)/8 + 45) % 1,000
 ;
 ;	The output will be the last 3 digits of the final
-;	value.
+;	value. The equation is random and not of any real use,
+;	but it does pose a problem, this does not allow the use of
+;	the built in 'div' function since that is limited in the result size.
+;	Shifting was used instead to make up for this constraint.
 
 
 ; Program Details:
@@ -13,9 +16,9 @@
 ;	from 0 - 9, such that the available numbers
 ;	are 000 - 999 to be worked on.
 ;
-;	Output are the last 3 digits of a result. Example,
-;	if the resulting number is 6075 then the digits are
-;	075.
+;	Output are the last 3 digits of a the result. For example,
+;	if the expression results in a 4 digit number such as 6075 
+;	then the displayed digits are 075.
 ;
 ;	To divide by 8, the program used a right-shifting
 ;	instruction as opposed to the div instruction. As
@@ -45,6 +48,43 @@
 ;	d6 = Ten's digit of result
 ;	d7 = Hundred's digit of result
 
+
+; How the Registers Look in memory, every two []'s is 1 byte since the registers each hold 32 bits, there are 4 bytes
+; d0 = [][] [][] [][] [][]
+;
+; d1 = [][] [][] [][] [][]
+;
+; d2 = [][] [][] [][] [][]
+;
+; d3 = [][] [][] [][] [][]
+;
+; d4 = [][] [][] [][] [][]
+;
+; d5 = [][] [][] [][] [][]
+;
+; d6 = [][] [][] [][] [][]
+;
+; d7 = [][] [][] [][] [][]
+
+
+
+; How the Registers Look in memory after reading in a value of '9' for example, which is represented by --> 0011 1001 as a character.
+;
+; d0 = [][] [][] [][] [3][9]
+;
+; d1 = [][] [][] [][] [][]
+;
+; d2 = [][] [][] [][] [][]
+;
+; d3 = [][] [][] [][] [][]
+;
+; d4 = [][] [][] [][] [][]
+;
+; d5 = [][] [][] [][] [][]
+;
+; d6 = [][] [][] [][] [][]
+;
+; d7 = [][] [][] [][] [][]
 
 
 
