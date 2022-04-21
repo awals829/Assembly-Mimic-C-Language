@@ -1,11 +1,3 @@
-; Name: Andrew Walsh
-; Email: awals985@mtroyal.ca
-; Course: Computing Machinery 1, COMP 2655
-; Assignment: Asg #3, phase 2
-; Due Date: Oct, 29/2021
-; Filename: FIRST.S
-; Instructor: Paul Pospisil
-
 ; Program Purpose:
 ;	To read 3 digits of user input as an 'X' value and
 ;	calculate the input as follows:
