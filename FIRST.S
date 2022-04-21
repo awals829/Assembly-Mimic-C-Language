@@ -45,6 +45,10 @@
 ;	d6 = Ten's digit of result
 ;	d7 = Hundred's digit of result
 
+
+
+
+
 ; Declared Constants:
 ; CLRBYTE = Clears all of the register except the LSB
 ; CLRWORD = CLears all of the register except the LSW
@@ -62,7 +66,7 @@ CHARZERO	equ	'0'
 
 
 start:	jsr	read_char	;READ FIRST CHARACTER (HUNDRED'S)
-	and.l	#CLRBYTE,d0	;Clear excess values in d0
+	and.l	#CLRBYTE,d0	;Clear excess values in d0 register
 	move.b	d0,d3
 	sub.b	#CHARZERO,d3	;Subtract lowest range char for binary value
 	mulu.w	#10,d3		
@@ -71,18 +75,18 @@ start:	jsr	read_char	;READ FIRST CHARACTER (HUNDRED'S)
 ;--------------------
 
 	jsr	read_char	;READ SECOND CHARACTER (TEN'S)	
-	and.l	#CLRBYTE,d0
+	and.l	#CLRBYTE,d0	;Clear excess values in d0 register
 	move.b	d0,d2
-	sub.b	#CHARZERO,d2
+	sub.b	#CHARZERO,d2	;Subtract lowest range char for binary value
 	add.b	d2,d4
 	mulu.w	#10,d4		
 
 ;--------------------
 
 	jsr	read_char	;READ THIRD CHRACTER (ONE'S)	
-	and.l	#CLRBYTE,d0
+	and.l	#CLRBYTE,d0	;Clear excess values in d0 register
 	move.b	d0,d1		
-	sub.b	#CHARZERO,d1		
+	sub.b	#CHARZERO,d1	;Subtract lowest range char for binary value	
 	add.w	d1,d4		
 
 ;--------------------
@@ -111,7 +115,7 @@ start:	jsr	read_char	;READ FIRST CHARACTER (HUNDRED'S)
 	
 	divu	#10,d5		;RETRIEVE THE ONE'S DIGIT
 	swap	d5
-	add.b	#CHARZERO,d5		
+	add.b	#CHARZERO,d5	;Convert value back to a char for printing	
 
 ;--------------------
 	
@@ -129,7 +133,7 @@ start:	jsr	read_char	;READ FIRST CHARACTER (HUNDRED'S)
 	and.l	#CLRWORD,d7
 	divu	#10,d7
 	swap	d7
-	add.b	#CHARZERO,d7		
+	add.b	#CHARZERO,d7	;Convert value back to a char for printing	
 
 ;--------------------
 	
