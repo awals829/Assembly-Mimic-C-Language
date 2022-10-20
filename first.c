@@ -39,10 +39,17 @@ struct termios orig;
 int d0, d1, d2, d3, d4, d5, d6, d7;
 
 
+/* ===== Made for output testing purposes only ===== */
+void hexOut(int);
+void newLine();
+/* ================================================= */
+
+
 int main()
 {
     /* Read First Character (Digit) */
     read_char();
+    hexOut(d0);
     d0 = d0 & 0x000000FF;
     d3 = d0;
     d3 = d3 - '0';
@@ -53,6 +60,7 @@ int main()
     
     /* Read second Character (Digit) */
     read_char();
+    hexOut(d0);
     d0 = d0 & 0x000000FF;
     d2 = d0;
     d2 = d2 - '0';
@@ -63,6 +71,7 @@ int main()
 
     /* Read Third Character (Digit) */
     read_char();
+    hexOut(d0);
     d0 = d0 &  0x000000FF;
     d1 = d0;
     d1 = d1 - '0';
@@ -169,3 +178,23 @@ void cleanup()
 {
   tcsetattr(0, 0, &orig);
 }
+
+
+
+/* ===== Testing Functions only ===== */
+void hexOut(int value)
+{
+  newLine();
+  printf("0x%08X\n", value);
+  newLine();
+  return;
+}
+
+void newLine() {
+  d0 = CR;
+  write_char();
+  d0 = LF;
+  write_char();
+  return;
+}
+/* ================================== */
