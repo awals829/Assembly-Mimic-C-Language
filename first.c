@@ -105,7 +105,6 @@ int main()
     /* (4 * x^2 + (23 * x + 136) / 3) % 1000 */
     d4 = d4 % 1000;
 
-
 /* -------------------- */
 
     /* Start a new line */
@@ -159,6 +158,7 @@ int main()
     return 0;
 }
 
+/* -------------------- */
 
 /* don't worry about how this works, just call it */
 void read_char()
