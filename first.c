@@ -40,7 +40,8 @@ int d0, d1, d2, d3, d4, d5, d6, d7;
 
 
 /* ===== Made for output testing purposes only ===== */
-void hexValue(int);
+void hexOut(int);
+void decOut(int);
 void newLine();
 /* ================================================= */
 
@@ -49,9 +50,8 @@ int main()
 {
     /* Read First Character (Digit) */
     read_char();
-    d0 = d0 & 0x000000FF;
+    d0 = d0 & 0xF;
     d3 = d0;
-    d3 = d3 - '0';
     d3 = d3 * 10;
     d4 = d3;
 	
@@ -59,9 +59,8 @@ int main()
     
     /* Read second Character (Digit) */
     read_char();
-    d0 = d0 & 0x000000FF;
+    d0 = d0 & 0xF;
     d2 = d0;
-    d2 = d2 - '0';
     d4 = d4 + d2;
     d4 = d4 * 10;
 	
@@ -69,9 +68,8 @@ int main()
 
     /* Read Third Character (Digit) */
     read_char();
-    d0 = d0 &  0x000000FF;
+    d0 = d0 & 0xF;
     d1 = d0;
-    d1 = d1 - '0';
     d4 = d4 + d1;
 	
 // /* -------------------- */
@@ -202,10 +200,18 @@ void cleanup()
 
 
 /* ===== Testing Functions only ===== */
-void hexValue(int value)
+void hexOut(int value)
 {
   newLine();
   printf("0x%08X\n", value);
+  newLine();
+  return;
+}
+
+void decOut(int value)
+{
+  newLine();
+  printf("%d\n", value);
   newLine();
   return;
 }
