@@ -40,7 +40,7 @@ int d0, d1, d2, d3, d4, d5, d6, d7;
 
 
 /* ===== Made for output testing purposes only ===== */
-void hexOut(int);
+void hexValue(int);
 void newLine();
 /* ================================================= */
 
@@ -49,7 +49,6 @@ int main()
 {
     /* Read First Character (Digit) */
     read_char();
-    hexOut(d0);
     d0 = d0 & 0x000000FF;
     d3 = d0;
     d3 = d3 - '0';
@@ -60,7 +59,6 @@ int main()
     
     /* Read second Character (Digit) */
     read_char();
-    hexOut(d0);
     d0 = d0 & 0x000000FF;
     d2 = d0;
     d2 = d2 - '0';
@@ -71,21 +69,43 @@ int main()
 
     /* Read Third Character (Digit) */
     read_char();
-    hexOut(d0);
     d0 = d0 &  0x000000FF;
     d1 = d0;
     d1 = d1 - '0';
     d4 = d4 + d1;
 	
+// /* -------------------- */
+
+//     /* Constructing Equation y = ((3 * x)^2 / 8 + 45) % 10,000 */
+//     d4 = d4 * 3;
+//     d4 = d4 * d4;
+//     d4 = d4 / 8;
+//     d4 = d4 + 45;
+//     d4 = d4 % 10000;
+	
 /* -------------------- */
 
-    /* Constructing Equation y = ((3 * x)^2/8 + 45) % 10,000 */
-    d4 = d4 * 3;
+/* Constructing Equation y = (4 * x^2 + (23 * x + 136) / 3) % 1000 */
+    
+    /* Evaluating two separate instances of x */
+    d5 = d4;
+
+    /* (4 * x^2) */
     d4 = d4 * d4;
-    d4 = d4 / 8;
-    d4 = d4 + 45;
-    d4 = d4 % 10000;
-	
+    d4 = d4 * 4;
+
+    /* (23 * x + 136) / 3 */
+    d5 = d5 * 23;
+    d5 = d5 + 136;
+    d5 = d5 / 3;
+
+    /* (4 * x^2 + (23 * x + 136) / 3) */ 
+    d4 = d4 + d5;
+
+    /* (4 * x^2 + (23 * x + 136) / 3) % 1000 */
+    d4 = d4 % 1000;
+
+
 /* -------------------- */
 
     /* Start a new line */
@@ -182,7 +202,7 @@ void cleanup()
 
 
 /* ===== Testing Functions only ===== */
-void hexOut(int value)
+void hexValue(int value)
 {
   newLine();
   printf("0x%08X\n", value);
