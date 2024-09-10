@@ -1,5 +1,5 @@
 # *Assembly-Mimic-C-Language*
-Using the C Programming language to mimic an old 32-bit Motorola 68k Processor instructions set that I translated to an emulator.
+Using the C Programming language to mimic an old 32-bit Motorola 68k Processor instructions set translated to an emulator.
 
 - The C code will be provided in the file __first.c__
 - The emulator code will be provided in a file named __FIRST.S__
